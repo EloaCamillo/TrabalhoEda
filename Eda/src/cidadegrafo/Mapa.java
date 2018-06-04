@@ -39,67 +39,67 @@ public class Mapa {
 		
 		
 		//Definir as arestas
-        portoUniao.addCidadeAdjacente(new Adjacente(pauloFrontin));
-        portoUniao.addCidadeAdjacente(new Adjacente(canoinhas));
-        portoUniao.addCidadeAdjacente(new Adjacente(saoMateus));
+        portoUniao.addCidadeAdjacente(new Adjacente(pauloFrontin, 46));
+        portoUniao.addCidadeAdjacente(new Adjacente(canoinhas, 78));
+        portoUniao.addCidadeAdjacente(new Adjacente(saoMateus, 87));
         
-        pauloFrontin.addCidadeAdjacente(new Adjacente(portoUniao));
-        pauloFrontin.addCidadeAdjacente(new Adjacente(Irati));
+        pauloFrontin.addCidadeAdjacente(new Adjacente(portoUniao, 46));
+        pauloFrontin.addCidadeAdjacente(new Adjacente(Irati, 75));
         
-        canoinhas.addCidadeAdjacente(new Adjacente(portoUniao));
-        canoinhas.addCidadeAdjacente(new Adjacente(tresBarras));
-        canoinhas.addCidadeAdjacente(new Adjacente(mafra));
+        canoinhas.addCidadeAdjacente(new Adjacente(portoUniao, 78));
+        canoinhas.addCidadeAdjacente(new Adjacente(tresBarras, 12));
+        canoinhas.addCidadeAdjacente(new Adjacente(mafra, 66));
         
-        Irati.addCidadeAdjacente(new Adjacente(pauloFrontin));
-        Irati.addCidadeAdjacente(new Adjacente(palmeira));
-        Irati.addCidadeAdjacente(new Adjacente(saoMateus));
+        Irati.addCidadeAdjacente(new Adjacente(pauloFrontin, 75));
+        Irati.addCidadeAdjacente(new Adjacente(palmeira, 75));
+        Irati.addCidadeAdjacente(new Adjacente(saoMateus, 57));
         
-        palmeira.addCidadeAdjacente(new Adjacente(Irati));
-        palmeira.addCidadeAdjacente(new Adjacente(saoMateus));
-        palmeira.addCidadeAdjacente(new Adjacente(campoLargo));
+        palmeira.addCidadeAdjacente(new Adjacente(Irati, 75));
+        palmeira.addCidadeAdjacente(new Adjacente(saoMateus, 77));
+        palmeira.addCidadeAdjacente(new Adjacente(campoLargo, 55));
         
-        campoLargo.addCidadeAdjacente(new Adjacente(palmeira));
-        campoLargo.addCidadeAdjacente(new Adjacente(balsaNova));
-        campoLargo.addCidadeAdjacente(new Adjacente(curitiba));
+        campoLargo.addCidadeAdjacente(new Adjacente(palmeira, 55));
+        campoLargo.addCidadeAdjacente(new Adjacente(balsaNova, 22));
+        campoLargo.addCidadeAdjacente(new Adjacente(curitiba, 29));
         
-        curitiba.addCidadeAdjacente(new Adjacente(campoLargo));
-        curitiba.addCidadeAdjacente(new Adjacente(balsaNova));
-        curitiba.addCidadeAdjacente(new Adjacente(araucaria));
-        curitiba.addCidadeAdjacente(new Adjacente(SaoJose));
+        curitiba.addCidadeAdjacente(new Adjacente(campoLargo, 29));
+        curitiba.addCidadeAdjacente(new Adjacente(balsaNova, 51));
+        curitiba.addCidadeAdjacente(new Adjacente(araucaria, 37));
+        curitiba.addCidadeAdjacente(new Adjacente(SaoJose, 15));
         
-        balsaNova.addCidadeAdjacente(new Adjacente(curitiba));
-        balsaNova.addCidadeAdjacente(new Adjacente(campoLargo));
-        balsaNova.addCidadeAdjacente(new Adjacente(contenda));
+        balsaNova.addCidadeAdjacente(new Adjacente(curitiba, 37));
+        balsaNova.addCidadeAdjacente(new Adjacente(campoLargo, 22));
+        balsaNova.addCidadeAdjacente(new Adjacente(contenda, 19));
         
-        araucaria.addCidadeAdjacente(new Adjacente(curitiba));
-        araucaria.addCidadeAdjacente(new Adjacente(contenda));
+        araucaria.addCidadeAdjacente(new Adjacente(curitiba, 15));
+        araucaria.addCidadeAdjacente(new Adjacente(contenda, 49));
         
-        SaoJose.addCidadeAdjacente(new Adjacente(curitiba));
-        SaoJose.addCidadeAdjacente(new Adjacente(tijucas));
+        SaoJose.addCidadeAdjacente(new Adjacente(curitiba, 15));
+        SaoJose.addCidadeAdjacente(new Adjacente(tijucas, 49));
         
-        contenda.addCidadeAdjacente(new Adjacente(balsaNova));
-        contenda.addCidadeAdjacente(new Adjacente(araucaria));
-        contenda.addCidadeAdjacente(new Adjacente(lapa));
+        contenda.addCidadeAdjacente(new Adjacente(balsaNova, 19));
+        contenda.addCidadeAdjacente(new Adjacente(araucaria, 10));
+        contenda.addCidadeAdjacente(new Adjacente(lapa, 26));
         
-        mafra.addCidadeAdjacente(new Adjacente(tijucas));
-        mafra.addCidadeAdjacente(new Adjacente(lapa));
-        mafra.addCidadeAdjacente(new Adjacente(canoinhas));
+        mafra.addCidadeAdjacente(new Adjacente(tijucas, 99));
+        mafra.addCidadeAdjacente(new Adjacente(lapa, 57));
+        mafra.addCidadeAdjacente(new Adjacente(canoinhas, 66));
         
-        tijucas.addCidadeAdjacente(new Adjacente(mafra));
-        tijucas.addCidadeAdjacente(new Adjacente(SaoJose));
+        tijucas.addCidadeAdjacente(new Adjacente(mafra, 99));
+        tijucas.addCidadeAdjacente(new Adjacente(SaoJose, 49));
         
-        lapa.addCidadeAdjacente(new Adjacente(contenda));
-        lapa.addCidadeAdjacente(new Adjacente(saoMateus));
-        lapa.addCidadeAdjacente(new Adjacente(mafra));
+        lapa.addCidadeAdjacente(new Adjacente(contenda, 26));
+        lapa.addCidadeAdjacente(new Adjacente(saoMateus, 60));
+        lapa.addCidadeAdjacente(new Adjacente(mafra, 57));
         
-        saoMateus.addCidadeAdjacente(new Adjacente(palmeira));
-        saoMateus.addCidadeAdjacente(new Adjacente(Irati));
-        saoMateus.addCidadeAdjacente(new Adjacente(lapa));
-        saoMateus.addCidadeAdjacente(new Adjacente(tresBarras));
-        saoMateus.addCidadeAdjacente(new Adjacente(portoUniao));
+        saoMateus.addCidadeAdjacente(new Adjacente(palmeira, 77));
+        saoMateus.addCidadeAdjacente(new Adjacente(Irati, 57));
+        saoMateus.addCidadeAdjacente(new Adjacente(lapa, 60));
+        saoMateus.addCidadeAdjacente(new Adjacente(tresBarras, 43));
+        saoMateus.addCidadeAdjacente(new Adjacente(portoUniao, 87));
         
-        tresBarras.addCidadeAdjacente(new Adjacente(saoMateus));
-        tresBarras.addCidadeAdjacente(new Adjacente(canoinhas));
+        tresBarras.addCidadeAdjacente(new Adjacente(saoMateus, 43));
+        tresBarras.addCidadeAdjacente(new Adjacente(canoinhas, 12));
 		
 	}
 
