@@ -1,7 +1,7 @@
 package estruturas;
 
-import cidadegrafo.Cidade;
-import cidadegrafo.Mapa;
+import controler.Mapa;
+import model.Cidade;
 
 public class VetorOrdenado {
 private  Cidade[] cidades;

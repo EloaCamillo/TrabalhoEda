@@ -1,22 +1,42 @@
-package cidadegrafo;
+package model;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-public class Cidade {
 
+@Entity
+@Table(name = "Cidade")
+public class Cidade implements Serializable {
+
+	private static final long serialVersionUID = 1L; 
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@OneToMany(cascade = CascadeType.ALL)
+	private int id;
 	private String nome;
     private boolean visitado;
+    @ManyToMany
     private List<Adjacente> adjacentes;
     private int distanciaObjetivo;
 
+    /*
     public Cidade(String nome, int distanciaObjetivo) {
         this.nome = nome;
         visitado = false;
         adjacentes = new ArrayList<Adjacente>();
         this.distanciaObjetivo= distanciaObjetivo;
     }
+    */
     
     public int getDistanciaObjetivo() {
 		return distanciaObjetivo;
@@ -25,11 +45,11 @@ public class Cidade {
 	public void setDistanciaObjetivo(int distanciaObjetivo) {
 		this.distanciaObjetivo = distanciaObjetivo;
 	}
-
+ /*
 	public void addCidadeAdjacente(Adjacente cidade) {
-        adjacentes.add(cidade);
+        this.adjacentes.add(cidade);
     }
-
+*/
     public String getNome() {
         return nome;
     }
@@ -49,6 +69,14 @@ public class Cidade {
     public List<Adjacente> getAdjacentes() {
         return adjacentes;
     }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
     
 	 
 

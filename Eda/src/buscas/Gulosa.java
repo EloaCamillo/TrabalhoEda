@@ -1,10 +1,10 @@
 package buscas;
 
 
-import cidadegrafo.Adjacente;
-import cidadegrafo.Cidade;
-import cidadegrafo.Mapa;
+import controler.Mapa;
 import estruturas.VetorOrdenado;
+import model.Adjacente;
+import model.Cidade;
 
 public class Gulosa {
 	private VetorOrdenado fronteira;
