@@ -1,6 +1,6 @@
-package estruturas;
+package main;
 
-import controler.Mapa;
+import controler.MapaControler;
 import model.Cidade;
 
 public class VetorOrdenado {
@@ -38,9 +38,10 @@ public void mostrar() {
 		System.out.println(cidades[i].getNome() + " - " +cidades[i].getDistanciaObjetivo());
 	}
 }
+/*
 public static void main(String[] args) {
 	
-	Mapa mapa= new Mapa();
+	MapaControler mapa= new MapaControler();
 	VetorOrdenado vetor = new VetorOrdenado(5); 
 	vetor.inserir(mapa.getPortoUniao());//203
 	vetor.inserir(mapa.getPauloFrontin());//172
@@ -49,7 +50,7 @@ public static void main(String[] args) {
 	vetor.mostrar();
 	
 }
-
+*/
 
 }
 
