@@ -1,10 +1,9 @@
-package buscas;
+package main;
 
 
-import cidadegrafo.Adjacente;
-import cidadegrafo.Cidade;
-import cidadegrafo.Mapa;
-import estruturas.VetorOrdenado;
+import controler.MapaControler;
+import model.Adjacente;
+import model.Cidade;
 
 public class Gulosa {
 	private VetorOrdenado fronteira;
@@ -38,9 +37,11 @@ public class Gulosa {
 		}
 		
 	}
+	/*
 	public static void main(String[] args) {
-		Mapa mapa = new Mapa();
+		MapaControler mapa = new MapaControler();
 		Gulosa g = new Gulosa (mapa.getPortoUniao());//objetivo
 		g.buscar(mapa.getCuritiba());//Cidade atual
 	}
+	*/
 }
