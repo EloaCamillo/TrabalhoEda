@@ -15,22 +15,22 @@ public class AstarSearchAlgo{
 
         public static void main(String[] args){
 
-        	Node portoUniao = new Node("Porto União", 203);
-    		Node pauloFrontin = new Node("Paulo Frontin", 172);
-    		Node canoinhas = new Node ("Canoinhas", 141);
-    		Node irati = new Node ("Irati", 139);
-    		Node palmeira = new Node("Palmeira", 59);
-            Node campoLargo = new Node("Campo Largo", 27);
-            Node curitiba = new Node("Curitiba",0);
-            Node balsaNova = new Node("Balsa Nova",41);
-            Node araucaria = new Node("Araucária",23);
-            Node saoJose = new Node("São José dos Pinhais",13);
-            Node contenda = new Node("Contenda",39);
-            Node mafra = new Node("Mafra",94);
-            Node tijucas = new Node("Tijucas do Sul",56);
-            Node lapa = new Node("Lapa",74);
-            Node saoMateus = new Node("São Mateus do Sul",23);
-            Node tresBarras = new Node("Três Barras",131);
+        	Node portoUniao = new Node("Porto União", 203, 0);
+    		Node pauloFrontin = new Node("Paulo Frontin", 172, 33);
+    		Node canoinhas = new Node ("Canoinhas", 141, 69);
+    		Node irati = new Node ("Irati", 139, 89);
+    		Node palmeira = new Node("Palmeira", 59, 140);
+            Node campoLargo = new Node("Campo Largo", 27, 178);
+            Node curitiba = new Node("Curitiba",0, 203);
+            Node balsaNova = new Node("Balsa Nova",41, 163);
+            Node araucaria = new Node("Araucária",23, 183);
+            Node saoJose = new Node("São José dos Pinhais",13, 204);
+            Node contenda = new Node("Contenda",39, 167);
+            Node mafra = new Node("Mafra",94, 127);
+            Node tijucas = new Node("Tijucas do Sul",56, 268);
+            Node lapa = new Node("Lapa",74, 142);
+            Node saoMateus = new Node("São Mateus do Sul",123, 81);
+            Node tresBarras = new Node("Três Barras",131, 78);
 
             portoUniao.adjacencies = new Edge[] {
             		new Edge(pauloFrontin, 46),
@@ -76,13 +76,13 @@ public class AstarSearchAlgo{
             };
             
             balsaNova.adjacencies = new Edge[] {
-            		new Edge(curitiba, 37),
+            		new Edge(curitiba, 51),
             		new Edge(campoLargo, 22),
             		new Edge(contenda, 19)
             };
             
             araucaria.adjacencies = new Edge[] {
-            		new Edge(curitiba, 15),
+            		new Edge(curitiba, 37),
             		new Edge(contenda, 49)
             };
             
@@ -93,7 +93,7 @@ public class AstarSearchAlgo{
             
             contenda.adjacencies = new Edge[] {
             		new Edge(balsaNova, 19),
-            		new Edge(araucaria, 10),
+            		new Edge(araucaria, 49),
             		new Edge(lapa, 26)
             };
             
@@ -149,9 +149,10 @@ public class AstarSearchAlgo{
 
         public static void AstarSearch(Node s, Node t){
 
-                Set<Node> explored = new HashSet<Node>();
+                Set<Node> exploredS = new HashSet<Node>();
+                Set<Node> exploredT = new HashSet<Node>();
 
-                PriorityQueue<Node> queue = new PriorityQueue<Node>(20, 
+                PriorityQueue<Node> queueS = new PriorityQueue<Node>(20, 
                      new Comparator<Node>(){
 		                 public int compare(Node i, Node j){
 		                    if(i.f > j.f){
@@ -163,45 +164,99 @@ public class AstarSearchAlgo{
 		                    }
 		                 }
                  });
+                
+                PriorityQueue<Node> queueT = new PriorityQueue<Node>(20, 
+                        new Comparator<Node>(){
+   		                 public int compare(Node i, Node j){
+   		                    if(i.f > j.f){
+   		                        return 1;
+   		                    } else if (i.f < j.f){
+   		                        return -1;
+   		                    } else {
+   		                        return 0;
+   		                    }
+   		                 }
+                    });
 
                 s.g = 0;
+                t.g = 0;
 
-                queue.add(s);
+                queueS.add(s);
+                queueT.add(t);
 
                 boolean found = false;
 
-                while((!queue.isEmpty())&&(!found)){
+                while(!found){
 
-                        Node current = queue.poll();
+                        Node currentS = queueS.poll();
+                        Node currentT = queueT.poll();
+                        
+                        System.out.println("[S] Nó atual: "+currentS.toString());
+                        System.out.println("[T] Nó atual: "+currentT.toString());
 
-                        explored.add(current);
+                        exploredS.add(currentS);
+                        exploredT.add(currentT);
 
-                        if(current.value.equals(t.value)){
+                        if(currentS.value.equals(t.value)){
+                        	System.out.println("O algoritmo S encontrou o objetivo T");
                                 found = true;
+                        } else if(currentT.value.equals(s.value)){
+                        	System.out.println("O algoritmo T encontrou o objetivo S");
+                            found = true;
+                        } else if (currentT.value.equals(currentS.value)) {
+                        	System.out.println("Os algoritmos T e S se encontraram em "+currentT.value);
+                        	found = true;
                         }
 
-                        for(Edge e : current.adjacencies){
+                        for(Edge e : currentS.adjacencies){
                                 Node node = e.target;
                                 double cost = e.cost;
-                                double aux_g = current.g + cost;
-                                double aux_f = aux_g + node.h;
+                                double aux_g = currentS.g + cost;
+                                double aux_f = aux_g + node.hS;
+                                
+                                //System.out.println("[S] Nó alvo: " + node.toString());
 
-                                if((explored.contains(node)) && 
+                                if((exploredS.contains(node)) && 
                                         (aux_f >= node.f)){
                                         continue;
-                                } else if((!queue.contains(node)) || 
+                                } else if((!queueS.contains(node)) || 
                                         (aux_f < node.f)){
 
-                                        node.parent = current;
+                                        node.parent = currentS;
                                         node.g = aux_g;
                                         node.f = aux_f;
 
-                                        if(queue.contains(node)){
-                                                queue.remove(node);
+                                        if(queueS.contains(node)){
+                                                queueS.remove(node);
                                         }
-                                        queue.add(node);
+                                        queueS.add(node);
                                 }
                         }
+                        
+                        for(Edge e : currentT.adjacencies){
+                            Node node = e.target;
+                            double cost = e.cost;
+                            double aux_g = currentT.g + cost;
+                            double aux_f = aux_g + node.hT;
+                            
+                            //System.out.println("[T] Nó alvo: " + node.toString());
+
+                            if((exploredT.contains(node)) && 
+                                    (aux_f >= node.f)){
+                                    continue;
+                            } else if((!queueT.contains(node)) || 
+                                    (aux_f < node.f)){
+
+                                    node.parent = currentT;
+                                    node.g = aux_g;
+                                    node.f = aux_f;
+
+                                    if(queueT.contains(node)){
+                                            queueT.remove(node);
+                                    }
+                                    queueT.add(node);
+                            }
+                    }
                 }
         } 
 }
