@@ -27,7 +27,7 @@ public class Cidade implements Serializable {
     private boolean visitado;
     @ManyToMany
     private List<Adjacente> adjacentes;
-    private int distanciaObjetivo;
+    private double distanciaObjetivo;
 
     /*
     public Cidade(String nome, int distanciaObjetivo) {
@@ -38,7 +38,7 @@ public class Cidade implements Serializable {
     }
     */
     
-    public int getDistanciaObjetivo() {
+    public double getDistanciaObjetivo() {
 		return distanciaObjetivo;
 	}
 

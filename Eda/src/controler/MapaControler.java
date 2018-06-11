@@ -7,24 +7,6 @@ import model.Local;
 import service.Services;
 
 public class MapaControler {
-	
-	private Cidade portoUniao;
-	private Cidade pauloFrontin;
-	private Cidade canoinhas;
-	private Cidade Irati;
-	private Cidade palmeira;
-	private Cidade campoLargo;
-	private Cidade curitiba;
-	private Cidade balsaNova;
-	private Cidade araucaria;
-	private Cidade SaoJose;
-	private Cidade contenda;
-	private Cidade mafra;
-	private Cidade tijucas;
-	private Cidade lapa;
-	private Cidade saoMateus;
-	private Cidade tresBarras;
-	
 	public void adicionaAdjacentes(Cidade c1, Cidade c2, Services a) {
 		c1.getAdjacentes().add(a.CriaAdjacente(c2));
 	}
@@ -52,14 +34,31 @@ public class MapaControler {
 		mb.salvar();
 	}
 	
+
+	
+	private Cidade portoUniao;
+	private Cidade pauloFrontin;
+	private Cidade canoinhas;
+	private Cidade Irati;
+	private Cidade palmeira;
+	private Cidade campoLargo;
+	private Cidade curitiba;
+	private Cidade balsaNova;
+	private Cidade araucaria;
+	private Cidade SaoJose;
+	private Cidade contenda;
+	private Cidade mafra;
+	private Cidade tijucas;
+	private Cidade lapa;
+	private Cidade saoMateus;
+	private Cidade tresBarras;
 	
 	public MapaControler() {
+		
 		Services a = new Services();
-		LocalMB localMB = new LocalMB();
 		CidadeMB cidadeMB = new CidadeMB();
 		AdjacenteMB adjacenteMB = new AdjacenteMB();
-		Cidade c = new Cidade();
-		
+		//Modelo de salvar uma cidade
 		portoUniao = a.CriaCidade("Porto União", 203);
 		cidadeMB.setCidade(portoUniao);
 		cidadeMB.salvar();
@@ -67,21 +66,27 @@ public class MapaControler {
 		pauloFrontin= a.CriaCidade("Paulo Frontin", 172);
 		cidadeMB.setCidade(pauloFrontin);
 		cidadeMB.salvar();
+		
 		canoinhas = a.CriaCidade("Canoinhas", 141);
 		cidadeMB.setCidade(canoinhas);
 		cidadeMB.salvar();
+		
 		Irati = a.CriaCidade("Irati", 139);
 		cidadeMB.setCidade(Irati);
 		cidadeMB.salvar();
+		
 		palmeira = a.CriaCidade("Palmeira", 59);
 		cidadeMB.setCidade(palmeira);
 		cidadeMB.salvar();
+		
         campoLargo = a.CriaCidade("Campo Largo", 27);
 		cidadeMB.setCidade(campoLargo);
 		cidadeMB.salvar();
+		
         curitiba = a.CriaCidade("Curitiba",0);
 		cidadeMB.setCidade(curitiba);
 		cidadeMB.salvar();
+		
         balsaNova = a.CriaCidade("Balsa Nova",41);
         salvaCidade(balsaNova,cidadeMB);
         
